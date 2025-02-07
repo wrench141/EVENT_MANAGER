@@ -167,12 +167,16 @@
     background: black;
     display: flex;
     gap: 20px;
+    overflow: hidden;
+    padding: 0 10%;
 }
 
 .evnt .section{
     flex: 0.2;
     padding: 40px;
-    background: #0e0e0e;
+    background: #0b0b0b;
+    border-right: 1px solid #232323;
+    border-left: 1px solid #232323;
 }
 
 .evnt .section .title{
@@ -192,6 +196,11 @@
 
 .evnt .details{
     flex: 1;
+    padding: 40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .evnt .section .seats{
@@ -209,6 +218,7 @@
     margin-top: 15px;
     border-radius: 10px;
     background-size: cover;
+    border: 1px solid #2e2e2e;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -216,7 +226,7 @@
 .evnt .section .seats .seatsWrap{
     width: max-content;
     height: auto;
-    background: #0c0c0c;
+    background: #000000;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 10px;
@@ -247,4 +257,143 @@
     background: gold;
     text-align: center;
     font-size: 16spx;
+}
+
+
+.evnt .details  .strip {
+    width: 100%;
+    height: 45px;
+    background-color: #e1ffb1;
+    font-family: "Unbounded";
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    border-radius: 10px;
+}
+
+.evnt .details .strip p{
+    display: inline-block;
+}
+
+.evnt .details .logs{
+    width: 100%;
+    height: 100%;
+    background: #0b0b0b;
+    border: 1px solid #232323;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    overflow-y: scroll;
+}
+
+.evnt .details .logs .msg{
+    width: max-content;
+    height: auto;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    font-family: "Open Sans";
+    margin-bottom: 7px;
+}
+
+.evnt .details .logs .msg .adName{
+    font-family: "Unbounded";
+    font-size: 14px;
+}
+
+.evnt .details .logs .msg .adName span{
+    color: orange;
+}
+
+.evnt .details .logs .msg .time{
+    color: grey;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.evnt .details .logs .msg .txtmsg{
+    width: max-content;
+    height: max-content;
+    padding: 8px 15px;
+    background: #131313;
+    border: 1px solid #232323;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.evnt .details .logs .inputWrap{
+    width: 100%;
+    height: 35px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    padding: 0 20px;
+}
+
+.evnt .details .logs .inputWrap .inp{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #232323;
+    background: #131313;
+    color: white;
+    font-family: "Open Sans";
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.evnt .details .logs .inputWrap .btn{
+    height: 100%;
+    width: max-content;
+    padding: 0 20px;
+    font-size: 12px;
+}
+
+@media only screen and (max-width: 614px) {
+    .evnt{
+        flex-direction: column-reverse;
+        height: max-content;
+        padding: 0;
+    }
+    .evnt .section .seats .seatsWrap{
+        grid-template-columns: repeat(8, 1fr);
+    }
+    .evnt .details{
+        flex: none;
+        height: 80vh;
+    }
+    .evnt .details .logs .msg{
+        width: 100%;
+        height: max-content;
+    }
+    .evnt .details .logs{
+        padding: 10px;
+    }
+    .evnt .details .logs .msg .txtmsg{
+        width: 100%;
+    }
+    .evnt .details .logs .inputWrap{
+        flex-direction: column;
+        height: auto;
+    }
+    .evnt .details .logs .inputWrap .inp{
+        height: 35px;
+    }
+    .evnt .details .logs .inputWrap .btn{
+        height: 25px;
+        width: 100%;
+    }
+
+
+    .eventContainer{
+        flex-direction: column;
+        height: max-content;
+    }
+
+
+
 }

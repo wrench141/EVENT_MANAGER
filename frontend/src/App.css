@@ -40,6 +40,10 @@
   color: white;
 }
 
+.nav .link.dn{
+  display: none;
+}
+
 .nav .logo{
   font-family: "Unbounded";
 }
@@ -55,7 +59,7 @@
 
 .landing .title{
   font-family: "Unbounded";
-  font-size: 50px;
+  font-size:70px;
   font-weight: bolder;
   line-height: 140%;
   word-spacing: 10px;
@@ -125,6 +129,12 @@
   color: white;
   background: #151515;
   border: 1px solid #757575;
+  background-color: #000000;
+    opacity: 0.8;
+    background-image: linear-gradient(135deg, #242424 25%, transparent 25%), linear-gradient(225deg, #242424 25%, transparent 25%), linear-gradient(45deg, #242424 25%, transparent 25%), linear-gradient(315deg, #242424 25%, #000000 25%);
+    background-position: 10px 0, 10px 0, 0 0, 0 0;
+    background-size: 10px 10px;
+    background-repeat: repeat;
   cursor: pointer;
 }
 
@@ -230,7 +240,7 @@
 
 .events{
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background: black;
 }
 
@@ -243,5 +253,193 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #e1ffb1;
+    opacity: 1;
+    background-image: radial-gradient(#000000 0.65px, transparent 0.65px), radial-gradient(#000000 0.65px, #e1ffb1 0.65px);
+    background-size: 26px 26px;
+    background-position: 0 0, 13px 13px;
   gap: 40px;
+  border-radius: 5px;
+}
+
+
+.events .cards {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.events .cards .card {
+  width: 300px;
+  height: auto;
+  padding: 15px;
+  border-radius: 10px;
+  background: #131313;
+}
+
+.events .cards .card .ename {
+  font-family: "Unbounded";
+  margin: 5px 0;
+  color: white;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+}
+
+.events .cards .card .ename .tag{
+  font-family: "Open Sans";
+  font-size: 11px;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background: #ffff0010;
+  text-transform: uppercase;
+}
+
+.events .cards .card .esub {
+  font-family: "Open Sans";
+  font-size: 12px;
+  color: grey;
+}
+
+.events .cards .card .banner {
+  width: 100%;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.events .cards .card .banner .tags {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.events .cards .card .btn.jn{
+  color: #e1ffb1;
+  border: 1px solid #e1ffb124;
+  background: #e1ffb12e;
+  font-size: 13px;
+}
+
+.events .filter{
+  width: 50%;
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  color: white;
+  padding: 10px 0;
+  margin-top: 30px;
+}
+
+.events .filter .wrap{
+  width: 100%;
+}
+
+.events .filter .wrap .lab{
+  font-size: 13px;
+  font-family: "Open Sans";
+  color: grey;
+  margin-bottom: 5px;
+}
+
+.events .filter .wrap .inp{
+  width: 100%;
+  height: 38px;
+  padding: 0 10px;
+  font-family: "Open Sans";
+  color: white;
+  background: #141414;
+  border: 1px solid #2d2d2d;
+  border-radius: 5px;
+}
+
+.events .filter .wrap .src{
+  width: max-content;
+  height: 35px;
+  padding: 0 15px;
+  border-radius: 5px;
+  font-family: "Open Sans";
+  color: #000;
+  background: #e1ffb1;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 614px){
+  .landing .title{
+    font-size: 30px;
+  }
+  .landing .title div .tag.mg, .side .tickets .ticket.bg{
+    display: none;
+  }
+  .landing .title div .tag{
+    margin-left: 10px;
+    height: 30px;
+    width: 70px;
+    margin-top: 5px;
+  }
+  .landing{
+    height: max-content;
+  }
+  .landing .sub{
+    width: 100%;
+    font-size: 11px;
+  }
+  .landing .section{
+    flex-direction: column;
+  }
+  .side .tickets .ticket .rt-dots .dot{
+    background: black;
+  }
+  .landing .section .side .btn{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .side .tickets .ticket{
+    transform: scale(0.7);
+  }
+  .events .strip{
+    font-size: 12px;
+    white-space: nowrap
+  }
+  .events .strip p{
+    display: inline-block;
+  }
+  .events .filter{
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .events .filter .wrap .lab.mb{
+    display: none;
+  }
+  .landing .title div{
+    display: inline-block;
+  }
+  .landing .title div .mg{
+    margin-left: 10px;
+  }
+
+
+  .nav{
+    padding: 0;
+  }
+  .nav .menu{
+    display: none;
+  }
+  .nav .link{
+    font-size: 11px;
+  }
+  .nav .link.dn {
+    display: inline-block;
+  }
 }

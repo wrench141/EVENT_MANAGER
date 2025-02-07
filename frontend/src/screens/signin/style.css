@@ -82,3 +82,16 @@
         transform: rotate(1turn)
     }
 }
+
+@media only screen and (max-width: 614px) {
+    .scontainer .title{
+        text-align: center;
+        width: 80%;
+    }
+    .scontainer .sub{
+        width: 70%;
+    }
+    .scontainer .wrapper{
+        width: 80%;
+    }
+}

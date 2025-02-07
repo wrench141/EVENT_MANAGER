@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const eventSchema = mongoose.Schema({
   name: { type: String, required: true },
-  uid: { type: mongoose.Schema.Types.ObjectId, ref: "Users" },
+  uid: { type: String, required: true },
   description: { type: String, required: true },
   bookedSlots: [{type: mongoose.Schema.Types.ObjectId, ref: "Users"}],
   maxSlotSize: {type: Number, required: true},

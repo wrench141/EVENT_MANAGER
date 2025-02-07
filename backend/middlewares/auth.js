@@ -10,7 +10,7 @@ module.exports = async function authMiddleware(req, res, next){
         if(email){
             const user = await User.findOne({email});
             if(user){
-                req.uid = user._id;
+                req.body.uid = user._id;
                 next()
             }else{
                 res.status(403).json({"msg":"session expired, please login."})

@@ -48,7 +48,9 @@ const joinRoom = async(req, res) => {
         const {uid} = req.body;
         const event = await Event.findById(eventId);
         if(event){
-            event.bookedSlots.push(uid);
+            if (!event.bookedSlots.includes(uid)){
+                event.bookedSlots.push(uid);
+            };
             await event.save();
             res.status(200).json({"msg": "joined event"});
         }else{
@@ -93,6 +95,21 @@ const getRooms = async(req, res) => {
     }
 }
 
+const getRoomsAdmin = async(req, res) => {
+    try {
+        const {uid} = req.body;
+        const events = await Event.find({uid});
+        if(events?.length > 0){
+            res.status(200).json({"events": events});
+        }else{
+            res.status(404).json({"msg": "no events found"})
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({"msg": "server error"});
+    }
+}
+
 
 const deleteRoom = async(req, res) => {
     try {
@@ -121,4 +138,12 @@ const getEvent = async(req, res) => {
     }
 }
 
-module.exports = { createRoom, joinRoom, exitRoom, getRooms, deleteRoom, getEvent };
+module.exports = {
+  createRoom,
+  joinRoom,
+  exitRoom,
+  getRooms,
+  deleteRoom,
+  getEvent,
+  getRoomsAdmin,
+};

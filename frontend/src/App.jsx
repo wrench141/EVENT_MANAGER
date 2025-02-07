@@ -1,7 +1,41 @@
 import './App.css';
 import t2 from "./assets/t2.jpg";
+import axios from "axios";
+import * as request from "./requests/request";
+import { useEffect, useState } from "react";
+
 // ✴
 function App() {
+
+  const [events, setEvents] = useState([]);
+  const [finevents, setFinEvents] = useState([...events]);
+
+  const fetchEvents = async () => {
+    const response = await request.getRequest("/events/");
+    setEvents(response?.events);
+    setFinEvents(response?.events);
+    console.log(response?.events);
+  };
+  useEffect(() => {
+    fetchEvents()
+  }, []);
+
+
+  const [name, setName] = useState("");
+  const [start, setStart] = useState("");
+
+  const filter = () => {
+    setFinEvents(
+      events.filter(
+        (ev) =>
+          ev.name.toLowerCase().includes(name.toLowerCase()) &&
+          (!start || ev.startDate === (new Date(start)).toISOString())
+      )
+    );
+  }
+
+  useEffect(() => filter(), [name, start]);
+
   return (
     <>
       <div className="container">
@@ -10,17 +44,39 @@ function App() {
             <a href="/" className="link">
               Home
             </a>
-            <a href="/" className="link">
+            <a href="/#explore" className="link">
               Explore
             </a>
-            <a href="/" className="link">
+            <a href="/createEvent" className="link">
               Create
             </a>
           </div>
-          <p className="logo">EVENT-X</p>
-          <a href="/signin" className="link">
-            signin
-          </a>
+          <p className="logo">EVENT • HORIZON</p>
+          {window.localStorage.getItem("token") != undefined ? (
+            <>
+              <a
+                href="/createEvent"
+                className="link dn"
+                style={{ cursor: "pointer" }}
+              >
+                Create
+              </a>
+              <p
+                onClick={() => {
+                  window.localStorage.removeItem("token");
+                  window.location.href = "/signin";
+                }}
+                className="link"
+                style={{ cursor: "pointer" }}
+              >
+                Logout
+              </p>
+            </>
+          ) : (
+            <a href="/signin" className="link">
+              signin
+            </a>
+          )}
         </div>
         <div className="landing">
           <div className="title">
@@ -28,12 +84,12 @@ function App() {
               <p>
                 Find Amazing <span>✴</span> events{" "}
               </p>{" "}
-              <div className="tag"></div>
+              <div className="tag mg"></div>
             </div>
             <div>
-              <p>happening in your</p>
+              <span>happening in your</span>
               <div className="tag"></div>
-              <p>city</p>
+              <span className="mg">city</span>
             </div>
           </div>
           <p className="sub">
@@ -101,12 +157,84 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="events">
+        <div className="events" id="explore">
           <div className="strip">
-              <p> ✴ New Events ✴ </p>
-              <p> ✴ New Events ✴ </p>
-              <p> ✴ New Events ✴ </p>
-              <p> ✴ New Events ✴ </p>
+            <p> ✴ New Events ✴ </p>
+            <p> ✴ New Events ✴ </p>
+            <p> ✴ New Events ✴ </p>
+            <p> ✴ New Events ✴ </p>
+          </div>
+          <div className="filter">
+            <div className="wrap">
+              <p className="lab">Name</p>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="search by event name"
+                className="inp"
+              />
+            </div>
+            <div className="wrap">
+              <p className="lab">Start Date</p>
+              <input
+                type="date"
+                value={start}
+                onChange={(e) => setStart(e.target.value)}
+                placeholder="search by date"
+                className="inp"
+              />
+            </div>
+            <div className="wrap">
+              <p
+                className="lab mb"
+                style={{ color: "transparent", userSelect: "none" }}
+              >
+                button
+              </p>
+              <button
+                className="src"
+                onClick={() => {
+                  setName("");
+                  setStart("");
+                }}
+              >
+                Clear Filters
+              </button>
+            </div>
+          </div>
+          <div className="cards">
+            {finevents?.map((event, i) => (
+              <div className="card" key={i}>
+                <div
+                  style={{ backgroundImage: `url(${event.banner})` }}
+                  alt=""
+                  className="banner"
+                />
+                <p
+                  className="ename"
+                  style={{ color: "orange", marginBottom: 8 }}
+                >
+                  {event.name}
+                  <span className="tag">{event?.roomType}</span>
+                </p>
+                <p
+                  className="esub"
+                  style={{ marginBottom: "13px", color: "white" }}
+                >
+                  {event?.startDate?.split("T")[0]} to{" "}
+                  {event?.endDate?.split("T")[0]}
+                </p>
+                <p className="esub">{event.description.slice(0, 70) + "..."}</p>
+                <a
+                  href={`/event/${event._id}`}
+                  className="btn jn"
+                  style={{ marginTop: 20 }}
+                >
+                  Join Event
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </div>

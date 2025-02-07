@@ -59,7 +59,7 @@ export default function CreateEvent(){
 
     const [events, setEvents] = useState([]);
     const fetchEvents = async() => {
-        const response = await request.getRequest("/events/");
+        const response = await request.getRequest("/events/admin");
         setEvents(response?.events)
         console.log(response?.events)
     }

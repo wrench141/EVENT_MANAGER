@@ -24,9 +24,24 @@ const io = new Server(http_server, {
 io.on("connection", (socket) => {
   console.log("socket connected");
 
-  socket.on(`joinroom`, (data) => {
-    console.log(data)
-  })
+  socket.on(`joinroom`, (roomid) => {
+    console.log(roomid);
+    socket.join(roomid);
+    io.sockets.in(roomid).emit("msg", {
+      name: "Admin",
+      time: new Date().toISOString(),
+      msg: "Thankyou for joining this event!!",
+    });
+  });
+
+  socket.on("privateRoom", (data) => {
+    console.log(data);
+    io.sockets.in(data.roomId).emit("msg", {
+      name: "Admin",
+      time: new Date().toISOString(),
+      msg: data.msg,
+    });
+  });
 
   socket.on("disconnect", () => {console.log("socket removed")})
 })
