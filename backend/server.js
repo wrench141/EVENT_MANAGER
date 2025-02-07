@@ -50,7 +50,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/auth", auth_router);
-app.use("/events", authMiddleware, event_router);
+app.use("/events", event_router);
 
 
 

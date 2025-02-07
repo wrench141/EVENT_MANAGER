@@ -34,7 +34,8 @@ function App() {
     );
   }
 
-  useEffect(() => filter(), [name, start]);
+  useEffect(() => filter(), [name]);
+  useEffect(() => filter(), [start]);
 
   return (
     <>
