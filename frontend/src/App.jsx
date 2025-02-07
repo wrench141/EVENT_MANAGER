@@ -205,7 +205,7 @@ function App() {
           </div>
           <div className="cards">
             {finevents?.map((event, i) => (
-              <div className="card" key={i}>
+              <div className="card">
                 <div
                   style={{ backgroundImage: `url(${event.banner})` }}
                   alt=""
