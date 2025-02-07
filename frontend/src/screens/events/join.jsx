@@ -51,8 +51,24 @@ export default function EventSpace(){
     return(
         <div className="evnt">
             <div className="section">
-                <p className="title">2nd aniversary</p>
-                
+                <p className="title">{data?.name}</p>
+                <p className="desc">{data?.description}</p>
+                <div style={{backgroundImage: `url(${data?.banner})`}} alt="" className="banner" />
+                <div className="seats">
+                    <p className="stitle">Available Seats ✦ {data?.maxSlotSize}</p>
+                    <div className="seatsWrap">
+                        {
+                            data != {} ? (new Array(parseInt(1)).fill(0)).map((e, i) => (
+                                <div className="seat booked">✦</div>
+                            )) : null
+                        }
+                        {
+                            data?.maxSlotSize != null ? (new Array(parseInt(data?.maxSlotSize) - 1).fill(0))?.map((e, i) => (
+                                <div className="seat"></div>
+                            )) : null
+                        }
+                    </div>
+                </div>
             </div>
             <div className="details">
 
