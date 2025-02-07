@@ -1,3 +1,3 @@
-const SERVER_API = "http://localhost:4000";
+const SERVER_API = "https://eventhorizon-api.vercel.app";
 
 export {SERVER_API}
