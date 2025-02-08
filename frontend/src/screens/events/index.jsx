@@ -65,6 +65,8 @@ export default function CreateEvent(){
     }
 
     useEffect(() => {
+        const token = window.localStorage.getItem("token");
+        if(!token){navigate("/signin")};
         fetchEvents()
     }, [])
 

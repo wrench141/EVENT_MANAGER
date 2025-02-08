@@ -42,6 +42,8 @@ export default function EventSpace(){
 
 
     useEffect(() => {
+      const token = window.localStorage.getItem("token");
+        if(!token){navigate("/signin")};
         fetchEvent();
         if(data){
             joinEvent();
