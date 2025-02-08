@@ -410,7 +410,8 @@
   }
   .events .strip{
     font-size: 12px;
-    white-space: nowrap
+    white-space: nowrap;
+    overflow: hidden;
   }
   .events .strip p{
     display: inline-block;
