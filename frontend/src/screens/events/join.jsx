@@ -5,7 +5,7 @@ import { SERVER_API } from "../../keys.js";
 import { useEffect, useState } from "react";
 
 import socketIo from "socket.io-client"
-const socket = socketIo.connect("http://localhost:4000")
+const socket = socketIo.connect("https://event-manager-73so.onrender.com")
 
 export default function EventSpace(){
     
