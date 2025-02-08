@@ -3,12 +3,12 @@ import {useParams} from "react-router"
 import "./style.css"
 import { SERVER_API } from "../../keys.js"; 
 import { useEffect, useState } from "react";
-
+import {useNavigate} from "react-router"
 import socketIo from "socket.io-client"
 const socket = socketIo.connect("https://event-manager-73so.onrender.com")
 
 export default function EventSpace(){
-    
+    const navigate = useNavigate();
     const id = (useParams())?.id;
     console.log(id);
 
